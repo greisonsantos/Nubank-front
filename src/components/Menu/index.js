@@ -5,9 +5,14 @@ import QRCode from 'react-native-qrcode-svg';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
-export default function Menu() {
+export default function Menu({translateY}) {
   return (
-    <Container>
+    <Container  style={{
+      opacity: translateY.interpolate({
+        inputRange: [0, 150],
+        outputRange: [0, 1],
+        }),
+    }}>
       <Code >
           <QRCode
            value="http://awesome.link.qr"
@@ -29,7 +34,7 @@ export default function Menu() {
 
           <NavItem>
            <Icon  name="help-outline" size={20} color="#FFF"/>
-           <NavText> Configuração de Cartão</NavText>
+           <NavText> Configuração do Cartão</NavText>
           </NavItem>
 
           <NavItem>
